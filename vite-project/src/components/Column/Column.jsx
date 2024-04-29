@@ -1,7 +1,6 @@
 import Card from "../Card/Card";
 
-const Column = ({ title }) => {
-  console.log(title);
+const Column = ({ data, title }) => {
   return (
     <div className="main__column column">
       <div className="column__title">
@@ -9,9 +8,10 @@ const Column = ({ title }) => {
       </div>
       <div className="cards">
         <div className="cards__item">
-          <Card cardTitle={"Webdesign"} color={"orange"} />
-          <Card cardTitle={"Research"} color={"green"} />
-          <Card cardTitle={"Copywriting"} color={"purple"} />
+          {data &&
+            data.map((card) => {
+              return <Card key={card.id} {...card} />;
+            })}
         </div>
       </div>
     </div>

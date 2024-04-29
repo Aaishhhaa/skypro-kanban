@@ -4,9 +4,10 @@ import Main from "./components/Main/Main";
 import Header from "./components/Header/Header";
 import PopBrowse from "./components/popups/PopBrowse/PopBrowse";
 import PopNewCard from "./components/popups/PopNewCard/PopNewCard";
+import { tasks } from "./data";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [data, setData] = useState(tasks);
 
   return (
     <>
@@ -34,8 +35,8 @@ function App() {
         <PopNewCard />
         <PopBrowse />
         {/* pop-up end*/}
-        <Header />
-        <Main />
+        <Header data={data} setData={setData} />
+        <Main data={data} />
       </div>
       <script src="js/script.js"></script>
     </>

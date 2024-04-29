@@ -1,7 +1,28 @@
 import React from "react";
 import PopUser from "../popups/PopUser/PopUser";
+import { useState } from "react";
+const Header = ({ data, setData }) => {
+  //Cоздаем состояние для модального окна
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-const Header = () => {
+  // handleClick функция для переключения состояния isOpen
+  const handleClick = () => {
+    console.log(isOpenModal);
+    setIsOpenModal((prev) => !prev);
+  };
+  const handleAddTask = (e) => {
+    e.preventDefault(),
+      setData([
+        ...data,
+        {
+          id: data[data.length - 1].id + 1,
+          status: "Без статуса",
+          title: "Web Design",
+          taskName: "Название задачи",
+          date: "30.10.23",
+        },
+      ]);
+  };
   return (
     <header className="header">
       <div className="container">
@@ -17,13 +38,21 @@ const Header = () => {
             </a>
           </div>
           <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" id="btnMainNew">
+            <buttonn
+              onClick={handleAddTask}
+              className="header__btn-main-new _hover01"
+              id="btnMainNew"
+            >
               <a href="#popNewCard">Создать новую задачу</a>
-            </button>
-            <a href="#user-set-target" className="header__user _hover02">
+            </buttonn>
+            <a
+              onClick={handleClick}
+              href="#user-set-target"
+              className="header__user _hover02"
+            >
               Ivan Ivanov
             </a>
-            <PopUser />
+            {isOpenModal && <PopUser />}
           </nav>
         </div>
       </div>
