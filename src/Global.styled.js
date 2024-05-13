@@ -74,34 +74,56 @@ export const Hover2 = css`
 `;
 
 export const Hover3 = css`
-  background-color: #33399b;
-  color: #ffffff;
-  a {
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
+  }
+  &:hover a {
     color: #ffffff;
   }
 `;
 
-const orange = css`
-  background-color: #ffe4c2;
-  color: #ff6d00;
-`;
-const green = css`
-  background-color: #b4fdd1;
-  color: #06b16e;
-`;
+// export const gray = css`
+//   background: #94a6be;
+//   color: #ffffff;
+// `;
 
-const purple = css`
-  background-color: #e9d4ff;
-  color: #9a48f1;
-`;
+export const topicStyles = {
+  _purple: {
+    backgroundColor: '#e9d4ff',
+    color: '#9a48f1',
+  },
+  _orange: {
+    backgroundColor: '#ffe4c2',
+    color: '#ff6d00',
+  },
+  _green: {
+    backgroundColor: '#b4fdd1',
+    color: '#06b16e',
+  },
+  _gray: {
+    backgroundColor: '#94a6be',
+    color: '#ffffff',
+  },
+};
 
-export const gray = css`
-  background: #94a6be;
-  color: #ffffff;
-`;
+export const colorTheme = (color) => {
+  try {
+    if (topicStyles[color]) {
+      return css`
+        ${topicStyles[color]}
+      `;
+    } else {
+      throw new Error(`Передан некорректный цвет: ${color}`);
+    }
+  } catch (error) {
+    console.log(error);
+    return css`
+      color: black;
+    `;
+  }
+};
 
-export const colorTheme = (color) => css`
-  ${color === 'orange' && orange}
-  ${color === 'green' && green}
-  ${color === 'purple' && purple}
-`;
+/* ${color === '_orange' && orange}
+${color === '_green' && green}
+${color === '_purple' && purple} */
