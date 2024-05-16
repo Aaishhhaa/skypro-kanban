@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Hover3 } from '../../../Global.styled';
 
 export const PopUser = styled.div`
   display: block;
@@ -14,6 +15,10 @@ export const PopUser = styled.div`
   padding: 34px;
   text-align: center;
   z-index: 2;
+
+  &:target {
+    display: block;
+  }
 
   button {
     width: 72px;
@@ -84,16 +89,20 @@ export const PopUserTheme = styled.div`
   }
 `;
 
-export const PopUserSet = styled.div`
-  button {
-    width: 72px;
-    height: 30px;
-    background: transparent;
-    color: #565eef;
-    border-radius: 4px;
-    border: 1px solid #565eef;
-    a {
-      color: #565eef;
-    }
-  }
+// export const PopUserSet = styled.div`
+//   button {
+//     width: 72px;
+//     height: 30px;
+//     background: transparent;
+//     color: #565eef;
+//     border-radius: 4px;
+//     border: 1px solid #565eef;
+//     a {
+//       color: #565eef;
+//     }
+//   }
+// `;
+
+export const PropUserButton = styled.button`
+  ${Hover3}
 `;

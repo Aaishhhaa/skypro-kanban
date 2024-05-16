@@ -28,6 +28,10 @@ export const CardTheme = styled.div`
   }
 `;
 
+export const CardThemeP = styled.p`
+  ${(props) => colorTheme(props.$color)}
+`;
+
 export const CardContent = styled.div`
   height: 64px;
   display: flex;
